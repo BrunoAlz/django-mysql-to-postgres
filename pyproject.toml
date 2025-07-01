@@ -1,0 +1,68 @@
+# pyproject.toml
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "django-mysql-to-postgres"
+version = "0.1.0"
+authors = [
+  { name = "Bruno Alves", email = "bruno6821@gmail.com" },
+]
+description = "An interactive command-line tool to migrate data from a MySQL database to PostgreSQL for Django projects, preserving all data."
+readme = "README.md"
+requires-python = ">=3.8"
+license = { file = "LICENSE" }
+keywords = ["django", "mysql", "postgres", "postgresql", "migration", "data"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Framework :: Django",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Database",
+    "Topic :: System :: Systems Administration",
+]
+
+# Core dependencies required for the package to run
+dependencies = [
+    "django>=3.2",
+    "rich",
+    "typer",
+    "questionary",
+    "python-decouple",
+]
+
+[project.urls]
+Homepage = "https://github.com/your-username/django-mysql-to-postgres" # Replace with your repo URL
+"Bug Tracker" = "https://github.com/your-username/django-mysql-to-postgres/issues" # Replace
+
+# This defines our command-line tool!
+# It creates a command 'db-porter' that calls the 'app' function in 'main.py'
+[project.scripts]
+db-porter = "django_mysql_to_postgres.cli.main:run"
+
+# Optional dependencies that users can install if they need them
+# e.g., pip install django-mysql-to-postgres[mysql,postgres]
+[project.optional-dependencies]
+mysql = ["mysqlclient"]
+postgres = ["psycopg2-binary"]
+
+# Configuration for the Ruff linter
+[tool.ruff]
+line-length = 88
+select = ["E", "F", "W", "I", "UP", "B"] # Standard set of rules
+
+# Configuration for the Black code formatter
+[tool.black]
+line-length = 88
