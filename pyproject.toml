@@ -1,24 +1,28 @@
-# pyproject.toml
-
 [build-system]
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "django-mysql-to-postgres"
-version = "0.1.0"
+version = "1.0.0"
 authors = [
   { name = "Bruno Alves", email = "bruno6821@gmail.com" },
 ]
-description = "An interactive command-line tool to migrate data from a MySQL database to PostgreSQL for Django projects, preserving all data."
+description = "An interactive CLI tool to flawlessly migrate DATA from MySQL to PostgreSQL for Django projects. It preserves primary keys, timestamps (auto_now/auto_now_add), and handles complex model dependencies, including circular ones."
 readme = "README.md"
 requires-python = ">=3.8"
 license = { file = "LICENSE" }
-keywords = ["django", "mysql", "postgres", "postgresql", "migration", "data"]
+keywords = ["django", "mysql", "postgres", "postgresql", "migration", "data", "migrate", "database", "etl", "porter", "mysql-to-postgres", "db-porter", "data-porter", "data-migration", "django-mysql-to-postgres", "data-migration-tool", "data-migration-tool"]
 classifiers = [
-    "Development Status :: 3 - Alpha",
+    "Development Status :: 4 - Beta",
     "Environment :: Console",
     "Framework :: Django",
+    "Framework :: Django :: 3.2",
+    "Framework :: Django :: 4.0",
+    "Framework :: Django :: 4.1",
+    "Framework :: Django :: 4.2",
+    "Framework :: Django :: 5.0",
+    "Framework :: Django :: 5.1",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
@@ -28,7 +32,6 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
-    "Programming Language :: Python :: 3.13",
     "Topic :: Software Development :: Libraries :: Python Modules",
     "Topic :: Database",
     "Topic :: System :: Systems Administration",
@@ -37,32 +40,32 @@ classifiers = [
 # Core dependencies required for the package to run
 dependencies = [
     "django>=3.2",
-    "rich",
-    "typer",
+    # Instala o Typer com todas as suas dependências opcionais, incluindo 'rich'
+    "typer[all]",
     "questionary",
-    "python-decouple",
 ]
 
 [project.urls]
-Homepage = "https://github.com/your-username/django-mysql-to-postgres" # Replace with your repo URL
-"Bug Tracker" = "https://github.com/your-username/django-mysql-to-postgres/issues" # Replace
+Homepage = "https://github.com/BrunoAlz/django-mysql-to-postgres"
+"Bug Tracker" = "https://github.com/BrunoAlz/django-mysql-to-postgres/issues"
 
-# This defines our command-line tool!
-# It creates a command 'db-porter' that calls the 'app' function in 'main.py'
 [project.scripts]
 db-porter = "django_mysql_to_postgres.cli.main:run"
 
-# Optional dependencies that users can install if they need them
-# e.g., pip install django-mysql-to-postgres[mysql,postgres]
 [project.optional-dependencies]
 mysql = ["mysqlclient"]
 postgres = ["psycopg2-binary"]
+# Grupo de conveniência que instala todos os drivers
+all = ["django-mysql-to-postgres[mysql,postgres]"]
 
-# Configuration for the Ruff linter
 [tool.ruff]
 line-length = 88
-select = ["E", "F", "W", "I", "UP", "B"] # Standard set of rules
 
-# Configuration for the Black code formatter
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "C4"] # Adiciona mais algumas regras úteis
+
+[tool.ruff.isort]
+known-first-party = ["django_mysql_to_postgres"]
+
 [tool.black]
 line-length = 88
