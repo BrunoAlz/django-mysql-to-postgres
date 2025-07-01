@@ -2,7 +2,7 @@
 
 A simples, interactive command-line tool to migrate data from a MySQL database to PostgreSQL for Django projects, preserving primary keys and handling complex dependencies.
 
-![db-porter Logo](https://raw.githubusercontent.com/BrunoAlz/django-mysql-to-postgres/main/docs/images/db-porter-logo.png)
+![db-porter Logo](https://raw.githubusercontent.com/BrunoAlz/django-mysql-to-postgres/master/docs/images/db-porter-logo.png)
 
 ![version](https://img.shields.io/badge/version-1.0.0-blue)
 ![GitHub Last Commit](https://img.shields.io/github/last-commit/BrunoAlz/django-mysql-to-postgres)
