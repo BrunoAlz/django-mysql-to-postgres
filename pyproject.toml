@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "django-mysql-to-postgres"
-version = "1.0.2"
+version = "1.0.3"
 authors = [
   { name = "Bruno Alves", email = "bruno6821@gmail.com" },
 ]
